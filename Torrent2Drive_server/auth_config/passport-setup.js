@@ -13,7 +13,7 @@ passport.deserializeUser((user, done) => {
 });
 
 const strategy = new GoogleDriveStrategy({
-    callbackURL: '/auth/google-drive/callback',
+    callbackURL: 'http://www.chrisncv.xyz/auth/google-drive/callback',
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET
 }, (accessToken, refreshToken, profile, done) => {
