@@ -1,6 +1,7 @@
 const passport = require('passport')
-const GoogleDriveStrategy = require('passport-google-oauth20');
+const GoogleDriveStrategy = require('passport-google-oauth').OAuth2Strategy;
 const refresh = require('passport-oauth2-refresh');
+const prettyjson = require('prettyjson');
 require('dotenv').config()
 
 passport.serializeUser((user, done) => {
@@ -14,7 +15,7 @@ passport.deserializeUser((user, done) => {
 const strategy = new GoogleDriveStrategy({
     callbackURL: '/auth/google-drive/callback',
     clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET
 }, (accessToken, refreshToken, profile, done) => {
     user = {
         info: {
@@ -27,7 +28,9 @@ const strategy = new GoogleDriveStrategy({
         refreshToken: refreshToken,
     }
     done(null, user);
+    // console.log(user)
 })
+
 
 passport.use(strategy)
 refresh.use(strategy)

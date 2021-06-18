@@ -8,7 +8,8 @@
     "build-client": "cd ./Torrent2Drive_frontend && npm install && npm run build",
     "install-server": "cd ./Torrent2Drive_server && npm install",
     "local-build": "npm run build-client && npm run install-server && cd ./Torrent2Drive_server",
-    "build": "cd ./Torrent2Drive_frontend && npm run build"
+    "build": "cd ./Torrent2Drive_frontend && npm run build",
+    "dev":  "cd Torrent2Drive_server && nodemon server.js"
   },
   "engines": {
     "node": ">= 4.0.0"
